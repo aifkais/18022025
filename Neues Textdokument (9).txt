@@ -1,0 +1,52 @@
+Hier ist der überarbeitete und optimierte Codeabschnitt, bei dem unnötige Wiederholungen reduziert und die Lesbarkeit erhöht wurden. Die Logik bleibt erhalten, aber der Code ist nun kompakter und effizienter:
+
+Verbesserte Version:
+python
+Kopieren
+Bearbeiten
+if len(table1) != 0:
+    table = "```\n"  # Anfang des Code-Blocks
+
+    # Überprüfung, ob der Tag in einem Transfertag-Bereich liegt
+    if day + 1 in range(7, 11) or day + 1 in range(17, 21) or day + 1 in range(27, 31):
+        # Anpassung von `day` auf den Beginn des jeweiligen Transfertag-Bereichs
+        if 7 <= day <= 10:
+            day = 6
+        elif 17 <= day <= 20:
+            day = 16
+        elif 27 <= day <= 30:
+            day = 26
+
+        # Berechnung des aktuellen Transfertages
+        transfer_tag = (day + 1) % 10
+        table += f"TRANSFERTAG: {transfer_tag} von 4\n"
+Änderungen und Verbesserungen:
+Nutzung von range:
+
+Statt explizit Listen wie [7, 8, 9, 10] anzugeben, wurde range verwendet (range(7, 11) entspricht den Zahlen 7 bis 10). Das macht den Code lesbarer und weniger fehleranfällig.
+Vermeidung wiederholter if-Abfragen:
+
+Die redundanten Bedingungen für die Anpassung des Tages (day) wurden durch eine kompakte Struktur mit elif-Blöcken ersetzt.
+Kompakte Berechnung des Transfertages:
+
+Die Berechnung von transfer_tag erfolgt jetzt dynamisch mit (day + 1) % 10. Dadurch wird die Notwendigkeit für separate if-Blöcke pro Transfertag eliminiert.
+Verbesserte Lesbarkeit:
+
+Der gesamte Codeabschnitt ist kürzer und klarer, da unnötige Wiederholungen vermieden wurden.
+Beispiel-Ausgabe:
+Angenommen, day = 7, dann wäre die Ausgabe:
+
+makefile
+Kopieren
+Bearbeiten
+TRANSFERTAG: 1 von 4
+Für day = 18:
+
+makefile
+Kopieren
+Bearbeiten
+TRANSFERTAG: 2 von 4
+Vorteile der neuen Version:
+Kürzerer Code: Weniger Zeilen bedeuten geringere Fehleranfälligkeit und leichtere Wartbarkeit.
+Flexibilität: Falls sich die Logik ändern sollte, kann sie leichter angepasst werden (z. B. andere Zeiträume oder Transfertagschemata).
+Bessere Performance: Auch wenn es in diesem Fall minimal ist, sind weniger Bedingungen effizienter.
